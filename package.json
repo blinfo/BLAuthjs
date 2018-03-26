@@ -1,0 +1,36 @@
+{
+  "name": "@blinfo/authjs",
+  "version": "0.0.1",
+  "description": "Javascript library, meant for browser use, to authenticate and authorize users against Björn Lundén Information",
+  "main": "dist/blauth.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist && mkdir dist",
+    "uglify": "uglifyjs src/*.js -m -o dist/blauth-min.js",
+    "prebuild": "npm run clean",
+    "build": "cp src/blauth.js dist && npm run uglify && cp src/*.ts dist",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "javascript",
+    "blinfo",
+    "bl",
+    "oauth2"
+  ],
+  "author": "Jon-Erik Liw <jon-erik.liw@blinfo.se>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "rimraf": "^2.6.2",
+    "uglify-js": "^3.3.16"
+  }
+}
