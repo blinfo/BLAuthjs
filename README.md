@@ -21,15 +21,15 @@ BLAuth.getLoginStatus((res) => {
 ```
 
 #### Init option params
-```css
-    clientId: The id of registrated client at BL.
-    redirectURI: Registrated redirect URL.
-    scope: Requested scope. 
-    returnURL: Return URL (optional). 
-    width: Width of login popup (optional).
-    height: Height of login popop (optional).
-    env: Environment - dev, test, empty for production (optional).
-```
+
+* __clientId__: The id of registrated client at BL.
+* __redirectURI__: Registrated redirect URL.
+* __scope__: Requested scope. 
+* __returnURL__: Return URL (optional). 
+* __width__: Width of login popup (optional).
+* __height__: Height of login popop (optional).
+* __env__: Environment - dev, test, empty for production (optional).
+
 
 ### Login
 ```javascript
