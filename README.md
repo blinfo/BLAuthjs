@@ -38,6 +38,17 @@ BLAuth.login((res) => {
 });
 ```
 
+### Response
+```typescript
+export interface BLUser {
+    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    userName: string;
+    authToken: string;
+}
+```
 
 ### Logout
 ```javascript
