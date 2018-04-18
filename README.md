@@ -14,7 +14,7 @@ npm install @blinfo/authjs
 
 ### Initialize
 ```javascript
-BLAuth.init({ clientId: 'your-client-id', redirectURI: 'your-redirect-url', scope: 'requested-scope'});
+BLAuth.init({ clientId: 'your-client-id', redirectURI: 'your-redirect-url', scopes: ['requested-scope']});
 BLAuth.getLoginStatus((res) => {
     console.log('Logged in user:' + res.name);
 });
@@ -24,7 +24,7 @@ BLAuth.getLoginStatus((res) => {
 
 * __clientId__: string - The id of registrated client at BL.
 * __redirectURI__: string - Registrated redirect URL.
-* __scopes__: string[] (optional) - Requested scopes. If no scope is provided, then the id scope USER_IDENTITY will be used.
+* __scopes__: stringarray (optional) - Requested scopes. If no scope is provided, then the id scope USER_IDENTITY will be used.
 * __returnURL__: string (optional) - Return URL. 
 * __width__: number (optional) - Width of login popup.
 * __height__: number (optional) - Height of login popup.
