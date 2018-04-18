@@ -17,7 +17,6 @@
     if (!root) {
         throw new Error('BLAuth needs the window as global context');
     }
-    var clientId, redirectURI, scope, returnURL, width, height, authURL, callback;
 
     function getCookieValue(a) {
         var b = root.document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
@@ -43,19 +42,24 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
     var BLAuth = {};
+    var width, height, authURL, callback;
     BLAuth.init = function (options) {
         var urlStr, jwt;
-        clientId = options.clientId;
-        redirectURI = options.redirectURI;
-        scope = options.scope || '';
-        returnURL = options.returnURL || '';
+        var clientId = encodeURI(options.clientId);
+        var redirectURI = encodeURI(options.redirectURI);
+        var scopes = 'USER_IDENTITY';
+        if (options.scopes && options.scopes.length !== 0) {
+            scopes = encodeURI(options.scopes.join(' '));
+        }
+        var returnURL = options.returnURL || '';
+        returnURL = encodeURI(returnURL);
         width = options.width || 500;
         height = options.height || 700;
         var env = options.env ? options.env : '';
         authURL = "https://apigateway.blinfo.se/sso" + env + "/authz?" +
             "redirect_uri=" + redirectURI +
             "&client_id=" + clientId +
-            "&scope=" + scope +
+            "&scope=" + scopes +
             "&returnUrl=" + returnURL;
         root.addEventListener('message', function (e) {
             if (e.origin === redirectURI.split('/').slice(0, 3).join('/')) {
@@ -79,7 +83,7 @@
         });
         if (root.opener != null && !root.opener.closed) {
             urlStr = root.location.href;
-            jwt = getParameterByName('jwt');            
+            jwt = getParameterByName('jwt');
             root.opener.postMessage({ jwt: jwt }, urlStr.split('?')[0]);
             root.close();
         }

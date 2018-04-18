@@ -1,6 +1,6 @@
 {
   "name": "@blinfo/authjs",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Javascript library, meant for browser use, to authenticate and authorize users against Björn Lundén Information",
   "main": "dist/blauth.js",
   "types": "dist/index.d.ts",
@@ -23,6 +23,10 @@
   ],
   "author": "Jon-Erik Liw <jon-erik.liw@blinfo.se>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blinfo/BLAuthjs/issues"
+  },
+  "homepage": "https://github.com/blinfo/BLAuthjs#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/blinfo/BLAuthjs"
@@ -30,7 +34,7 @@
   "devDependencies": {
     "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",

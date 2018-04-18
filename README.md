@@ -22,13 +22,13 @@ BLAuth.getLoginStatus((res) => {
 
 #### Init option params
 
-* __clientId__: The id of registrated client at BL.
-* __redirectURI__: Registrated redirect URL.
-* __scope__: Requested scope. 
-* __returnURL__: Return URL (optional). 
-* __width__: Width of login popup (optional).
-* __height__: Height of login popop (optional).
-* __env__: Environment - dev, test, empty for production (optional).
+* __clientId__: string - The id of registrated client at BL.
+* __redirectURI__: string - Registrated redirect URL.
+* __scopes__: string[] (optional) - Requested scopes. If no scope is provided, then the id scope USER_IDENTITY will be used.
+* __returnURL__: string (optional) - Return URL. 
+* __width__: number (optional) - Width of login popup.
+* __height__: number (optional) - Height of login popup.
+* __env__: string (optional) - Environment (dev, test or empty for production).
 
 
 ### Login

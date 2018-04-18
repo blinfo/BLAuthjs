@@ -24,7 +24,7 @@ export function getLoginStatus(callback: (value: BLUser) => void): void;
 export interface AuthOptions {
     clientId: string;
     redirectURI: string;
-    scope: string;
+    scopes?: string[];
     returnURL?: string;
     width?: number;
     height?: number;
