@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Application</title>
+        <script src="blauth.js"></script>
+    </head>
+    <body>
+        <h1>Application</h1>
+        <input id="login" type="button" value="Login" onclick="login();" />
+        <script>
+            console.log('Initializing...');
+            BLAuth.init({ clientId: 'bl-annual-report', redirectURI: 'http://localhost:5000'});
+            BLAuth.getLoginStatus((res) => {
+                console.log('Logged in user:' + res.name);
+            });
+            function login() {
+                BLAuth.login(res => {
+                    console.log('Logged in user:' + res.name);                    
+                });
+            }
+        </script>
+    </body>
+</html>

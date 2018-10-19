@@ -43,6 +43,7 @@
     }
     var BLAuth = {};
     var width, height, authURL, callback;
+    var POPUP_TITLE = "Björn Lundén Information AB - webbinlogg";
     BLAuth.init = function (options) {
         var urlStr, jwt;
         var clientId = encodeURI(options.clientId);
@@ -81,13 +82,14 @@
                 }
             }
         });
-        if (root.opener != null && !root.opener.closed) {
+   
+        if (root.opener && root.opener !== root && !root.opener.closed && root.name === POPUP_TITLE) {
             urlStr = root.location.href;
             jwt = getParameterByName('jwt');
             if(jwt) {
                 root.opener.postMessage({ jwt: jwt }, urlStr.split('?')[0]);
                 root.close();
-            }
+            }            
         }
         if (root.top != null && !root.top.closed) {
             urlStr = root.location.href;
@@ -109,7 +111,7 @@
     };
     BLAuth.login = function (call) {
         callback = call;
-        root.open(authURL, "Björn Lundén Information AB - webbinlogg", "width=" + width + ",height=" + height);
+        root.open(authURL, POPUP_TITLE, "width=" + width + ",height=" + height);
     };
     BLAuth.logout = function (call) {
         setCookie('blauth_loggedin', '', 1);
