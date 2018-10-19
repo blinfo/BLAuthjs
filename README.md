@@ -94,3 +94,30 @@ export class Auth2Service {
 }
 ```
 
+## How to build and publish
+1. Clone repo.
+2. Make changes.
+3. Build.
+```javascript
+npm run build
+```
+4. Commit changes.
+```javascript
+git add .
+git commit -m"made some changes."
+```
+5. Update version by typing the command:
+```javascript
+npm version [major|minor|patch]
+```
+6. Publish to npm registry.
+```javascript
+npm login
+npm publish
+```
+7. Push commits AND tag to git.
+```javascript
+git push
+git push origin vX.X.X
+```
+Need more help? https://docs.npmjs.com/getting-started/publishing-npm-packages
