@@ -84,8 +84,10 @@
         if (root.opener != null && !root.opener.closed) {
             urlStr = root.location.href;
             jwt = getParameterByName('jwt');
-            root.opener.postMessage({ jwt: jwt }, urlStr.split('?')[0]);
-            root.close();
+            if(jwt) {
+                root.opener.postMessage({ jwt: jwt }, urlStr.split('?')[0]);
+                root.close();
+            }
         }
         if (root.top != null && !root.top.closed) {
             urlStr = root.location.href;
