@@ -82,14 +82,14 @@
                 }
             }
         });
-   
+
         if (root.opener && root.opener !== root && !root.opener.closed && root.name === POPUP_TITLE) {
             urlStr = root.location.href;
             jwt = getParameterByName('jwt');
             if(jwt) {
                 root.opener.postMessage({ jwt: jwt }, urlStr.split('?')[0]);
                 root.close();
-            }            
+            }
         }
         if (root.top != null && !root.top.closed) {
             urlStr = root.location.href;
@@ -111,12 +111,18 @@
     };
     BLAuth.login = function (call) {
         callback = call;
-        root.open(authURL, POPUP_TITLE, "width=" + width + ",height=" + height);
+        var popup = root.open(authURL, POPUP_TITLE, "width=" + width + ",height=" + height);
+        //Window closed callback hack.
+        var timer = setInterval(function() {
+            if(popup.closed) {
+                clearInterval(timer);
+                call.call();
+            }
+        }, 1000);
     };
     BLAuth.logout = function (call) {
         setCookie('blauth_loggedin', '', 1);
         call.call();
     };
-
     return BLAuth;
 }));
