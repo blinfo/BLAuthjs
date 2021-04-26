@@ -1,6 +1,6 @@
 {
   "name": "@blinfo/authjs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Javascript library, meant for browser use, to authenticate and authorize users against Björn Lundén Information",
   "main": "dist/blauth.js",
   "types": "dist/index.d.ts",
