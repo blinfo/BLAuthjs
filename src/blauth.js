@@ -111,7 +111,9 @@
     };
     BLAuth.login = function (call) {
         callback = call;
-        var popup = root.open(authURL, POPUP_TITLE, "width=" + width + ",height=" + height);
+        // if the browser has blocked popups root.open will return null, so we sets the "popup" 
+        // to an object with closed = true to cancel the interval and call the callback
+        var popup = root.open(authURL, POPUP_TITLE, "width=" + width + ",height=" + height) || { closed: true };
         //Window closed callback hack.
         var timer = setInterval(function() {
             if(popup.closed) {
